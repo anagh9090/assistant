@@ -17,6 +17,10 @@ API_KEYS = [
 # Primary Dolphin-Qwen Model on OpenRouter
 TARGET_MODEL = "cognitivecomputations/dolphin-2.9.2-qwen2-7b"
 
+@app.get("/")
+async def root():
+    return {"status": "online", "model": TARGET_MODEL}
+    
 @app.post("/v1/chat/completions")
 async def chat_completions(request: Request):
     body = await request.json()
